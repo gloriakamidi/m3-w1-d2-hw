@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Food Blog</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+    <script src="http-vue-loader"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+
+<body>
+    <aside id="leftside"></aside>
+    <aside id="rightside"></aside>
+    <div id="container" class="container">
+        <div class="navigationBar sticky-top">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Recipes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Lifestyles</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Videos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <header>
+            <foodblog></foodblog>
+        </header>
+
+        <main>
+            <aside id="photos">
+                <img v-bind:src="hreflink" alt="White Chicken Chili" width="180">
+            </aside>
+            <comments></comments>
+
+
+            <section id="blogposts">
+                <div class="post">
+                    <div class="relative-position">
+                        <img v-bind:src="profile" alt="profile" class="profile rounded" v-on:click="showBox(0)">
+                        <div class="vertical-center">
+                            <span class="author">{{ objs[0].author }}</span> 
+                            <span class="date">{{ objs[0].date }}</span>
+                            <span class="reply">{{ reply }}</span>
+                        </div>
+                    </div>
+                    <p> {{ objs[0].paragraph }}</p>
+                </div>
+
+                <div class="post">
+                    <div class="relative-position">
+                    <img v-bind:src="profile" alt="profile" class="profile rounded" v-on:click="showBox(1)">
+                    <div class="vertical-center">
+                        <span class="author">{{ objs[1].author }}</span> 
+                        <span class="date">{{ objs[1].date }}</span>
+                        <span class="reply">{{ reply }}</span>
+                    </div>
+                </div>
+                    <p>{{ objs[1].paragraph }}</p>
+                </div>
+
+                <div class="post">
+                    <div class="relative-position">
+                    <img v-bind:src="profile" alt="profile" class="profile rounded" v-on:click="showBox(2)">
+                    <div class="vertical-center">
+                        <span class="author">{{ objs[2].author }}</span> —
+                        <span class="date">{{ objs[2].date }}</span>
+                        <span class="reply">{{ reply }}</span>
+                    </div>
+                    </div>
+                    <p>
+                        {{ objs[2].paragraph }}
+                    </p>
+                </div>
+
+                <div class="post">
+                    <div class="relative-position"></div>
+                    <img v-bind:src="profile" alt="profile" class="profile rounded" v-on:click="showBox(3)">
+                    <div class="vertical-center">
+                    <span class="author">{{ objs[3].author }}</span> —
+                    <span class="date">{{ objs[3].date }}</span>
+                    <span class="reply">{{ reply }}</span>
+                </div>
+            </div>
+                    <p>
+                        {{ objs[3].paragraph }}
+                    </p>
+            </div>
+            </section>
+        </div>
+
+            <div id="floatingBox">
+                <button onclick="modalOff()" class="modalOff btn btn-light">x</button>
+                <div id="texts" class="text-white"></div>
+                <button onclick="modalOff()" class="modalOff btn btn-light">close</button>
+            </div>
+            <!--<div id="info_box" v-for="post in posts" v-if="post.thisBox">
+            <p class="closeBtn closeBtnP" v-on:click="$emit('close', post.thisBox = false)">&#10006;</p>
+            <div id="info_title">{{ objs[3].author }}</div>
+            <div id="info_foodie"><span>Foodie Level: </span>{{ post.foodielevel }}</div>
+            <div id="info_bio"><span>Bio:<br></span>{{ post.bio }}</div>
+            <button class="closeBtn closeBtnB" v-on:click="$emit('close', post.thisBox = false)">Close</button>
+            <p id="close_info"></p>-->
+        </div>
+        </main>
+
+        <footer>&copy; Copyright FOOD BLOG</footer>
+
+    </div>
+
+    <script src="vue.js"></script>
+
+</body>
+
+</html>
